@@ -1,5 +1,11 @@
 <?php
 
+// Check if a custom live index exists (useful for different landing pages on live vs demo)
+if (file_exists(__DIR__ . '/index.live.php') && basename($_SERVER['PHP_SELF']) !== 'index.live.php') {
+    include __DIR__ . '/index.live.php';
+    exit;
+}
+
 $file = __DIR__ . '/data/links.json';
 
 if (!file_exists($file)) {
