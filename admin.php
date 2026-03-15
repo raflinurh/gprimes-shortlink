@@ -161,6 +161,9 @@ if (!isset($_SESSION['login'])) {
 $file = __DIR__ . '/data/links.json';
 
 if (!file_exists($file)) {
+    if (!is_dir(__DIR__ . '/data')) {
+        mkdir(__DIR__ . '/data', 0755, true);
+    }
     file_put_contents($file, "{}");
 }
 

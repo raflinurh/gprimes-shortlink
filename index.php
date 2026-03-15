@@ -3,7 +3,10 @@
 $file = __DIR__ . '/data/links.json';
 
 if (!file_exists($file)) {
-    die('File data/links.json tidak ditemukan');
+    if (!is_dir(__DIR__ . '/data')) {
+        mkdir(__DIR__ . '/data', 0755, true);
+    }
+    file_put_contents($file, "{}");
 }
 
 $data = json_decode(file_get_contents($file), true);
