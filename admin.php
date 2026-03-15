@@ -1,6 +1,11 @@
 <?php
 
 $password = "admin123";
+
+// Load custom password from config.php if it exists
+if (file_exists(__DIR__ . '/config.php')) {
+    include __DIR__ . '/config.php';
+}
 session_start();
 
 if (isset($_GET['logout'])) {
